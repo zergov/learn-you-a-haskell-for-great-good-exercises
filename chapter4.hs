@@ -47,9 +47,16 @@ elem' e (x:xs)
   | otherwise = elem' e xs
 
 -- sorting
+-- quicksort' :: (Ord a) => [a] -> [a]
+-- quicksort' [] = []
+-- quicksort' (x:xs) = left ++ [x] ++ right
+  -- where
+    -- left = quicksort' [i | i <- xs, i <= x]
+    -- right = quicksort' [i | i <- xs, i > x]
+
 quicksort' :: (Ord a) => [a] -> [a]
 quicksort' [] = []
-quicksort' (x:xs) = left ++ [x] ++ right
+quicksort' (x:xs) = left xs ++ [x] ++ right xs
   where
-    left = quicksort' [i | i <- xs, i <= x]
-    right = quicksort' [i | i <- xs, i > x]
+    left = quicksort' . filter (<= x)
+    right = quicksort' . filter (> x)
