@@ -24,3 +24,9 @@ encode offset = map (\c -> chr $ offset + ord c)
 -- facon du livre vraiment swag
 decode :: Int -> String -> String
 decode offset = encode (negate offset)
+
+-- what’s the first natural number such that the sum of its digits equals 40?
+sumNumDigits = sum . map digitToInt . show
+
+firstTo40 = find (\x -> (sumNumDigits x) == 40) [1..]
+firstTo n = find (\x -> (sumNumDigits x) == n) [1..]
