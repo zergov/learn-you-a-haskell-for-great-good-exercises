@@ -12,6 +12,7 @@ main = do
 
 dispatch :: String -> [String] -> IO()
 dispatch "add" = add
+dispatch "bump" = bump
 dispatch "list" = list
 dispatch "ls" = list
 dispatch "remove" = remove
@@ -45,3 +46,13 @@ remove _ = do
 
   writeFile todosFile newTodos
   putStrLn $ "task: " ++ (show number) ++ " deleted."
+
+bump :: [String] -> IO()
+bump [todo] = do
+  content <- readFile todosFile
+  (tempName, tempHandle) <- openTempFile "." "temp"
+  hPutStr tempHandle $ unlines $ todo : lines content
+  hClose tempHandle
+  removeFile todosFile
+  renameFile tempName todosFile
+  putStrLn $ "Task " ++ todo ++ " bumped to the top!"
