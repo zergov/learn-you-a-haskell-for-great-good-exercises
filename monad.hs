@@ -1,6 +1,6 @@
 import Data.Char
 
--- What bind `>>=` does
+-- Implementation of bind `>>=` for the Maybe Monad
 applyMaybe :: Maybe a -> (a -> Maybe b) -> Maybe b
 applyMaybe Nothing f = Nothing
 applyMaybe (Just x) f = f x
