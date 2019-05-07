@@ -25,3 +25,16 @@ associativity = do
     where m = [1337, 420]
           f x = map (show . (*100)) [x]
           g x = reverse [x]
+
+main = do
+  putStrLn "First law: Left Identity"
+  leftIdentity
+  putStrLn ""
+
+  putStrLn "Second law: Right Identity"
+  rightIdentity
+  putStrLn ""
+
+  putStrLn "Third law: Associativity"
+  associativity
+  putStrLn ""
