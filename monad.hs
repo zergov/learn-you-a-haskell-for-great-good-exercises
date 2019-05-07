@@ -24,7 +24,7 @@ justFirstLetter (x:xs) = return x
 -- with this, we can use `>>=` with oddLengthOnly and justFirstLetter
 -- I.E:
 -- ghci> oddLengthOnly "zomething strange" >>= justFirstLetter
--- ghci> Just 's'
+-- ghci> Just 'z'
 --------------------------------------
 
 -- Some other stuff
